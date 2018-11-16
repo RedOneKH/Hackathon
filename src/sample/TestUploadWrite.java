@@ -15,7 +15,19 @@ public class TestUploadWrite extends AnchorPane {
 
 
     public TestUploadWrite(ArrayList<String> headers,String query) {
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                getClass().getResource("/test.fxml")
+        );
 
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
 
 
 

@@ -89,35 +89,31 @@ public class RootLayout extends AnchorPane {
 
             DraggableNode dn=((DraggableNode)right_pane.getChildren().get(right_pane.getChildren().size()-1));
             if(dn!=null){
-                Stage stage;
-                FXMLLoader loader = new FXMLLoader();
-                Parent root;
-                Scene scene;
+                BorderPane root = new BorderPane();
+
+                try{
+                    Stage stage = new Stage();
+
+                    Scene scene = new Scene(root);
+                    scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
                 switch (dn.getType()) {
 
                     case select:
+                    case groupeby:
+
+                        root.setCenter(new TestUploadWrite(dn.getResulheaders(),dn.getQuery()));
                         break;
                     case combine:
 
                         break;
-                    case groupeby:
-
-                        break;
                     case file:
-                        BorderPane root2 = new BorderPane();
-
-                        try{
-                            stage = new Stage();
-
-                            scene = new Scene(root2);
-                            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
-                            stage.setScene(scene);
-                            stage.show();
-                            root2.setCenter(new TestUploadWrite(dn.getHeaders(),dn.getRecords()));
-
-                        } catch(Exception e) {
-                            e.printStackTrace();
-                        }
+                            root.setCenter(new TestUploadWrite(dn.getResulheaders(),dn.getRecords()));
                         break;
 
                     default:

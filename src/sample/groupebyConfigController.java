@@ -41,6 +41,12 @@ public class groupebyConfigController implements Initializable {
     private List<String> listGroupBy = new ArrayList<>();
     private List<Object> listAggregate = new ArrayList();
 
+    public void setDn(DraggableNode dn) {
+        this.dn = dn;
+    }
+
+    DraggableNode dn;
+
 
     private String tableName;
 
@@ -105,6 +111,9 @@ public class groupebyConfigController implements Initializable {
             System.out.println(groupby);
             query.append(groupby);
             System.out.println(query);
+            dn.setQuery(query.toString());
+            dn.setResulheaders(headers);
+
 
             BorderPane root = new BorderPane();
 

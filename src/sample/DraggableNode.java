@@ -80,6 +80,16 @@ public class DraggableNode extends AnchorPane {
 
     private ArrayList<String> headers;
 
+    public ArrayList<String> getResulheaders() {
+        return resulheaders;
+    }
+
+    public void setResulheaders(ArrayList<String> resulheaders) {
+        this.resulheaders = resulheaders;
+    }
+
+    private ArrayList<String> resulheaders;
+
 
 
     private final List<String> mLinkIds = new ArrayList<String>();
@@ -146,6 +156,7 @@ public class DraggableNode extends AnchorPane {
                             scene = new Scene(root);
                             stage.setScene(scene);
                             sc.addColumnsToVbox(headers);
+                            sc.setDn(this);
                             stage.show();
                             break;
                         case combine:
@@ -158,6 +169,7 @@ public class DraggableNode extends AnchorPane {
                             scene = new Scene(root);
                             stage.setScene(scene);
                             gc.initListView(headers);
+                            gc.setDn(this);
                             stage.show();
                             break;
                         case file:

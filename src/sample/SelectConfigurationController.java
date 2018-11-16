@@ -61,6 +61,12 @@ public class SelectConfigurationController implements Initializable {
 
     private String tableName;
 
+    DraggableNode dn;
+
+    public void setDn(DraggableNode dn) {
+        this.dn = dn;
+    }
+
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
@@ -179,6 +185,9 @@ public class SelectConfigurationController implements Initializable {
         }
 
         System.out.println(query);
+        dn.setQuery(query.toString());
+        dn.setResulheaders(headers);
+
 
         BorderPane root = new BorderPane();
 
