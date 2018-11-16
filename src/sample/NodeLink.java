@@ -20,6 +20,9 @@ public class NodeLink extends AnchorPane {
     @FXML
     CubicCurve node_link;
 
+    DraggableNode source;
+    DraggableNode target;
+
     private final DoubleProperty mControlOffsetX = new SimpleDoubleProperty();
     private final DoubleProperty mControlOffsetY = new SimpleDoubleProperty();
     private final DoubleProperty mControlDirectionX1 = new SimpleDoubleProperty();
@@ -104,7 +107,14 @@ public class NodeLink extends AnchorPane {
 
     public void bindEnds(DraggableNode source, DraggableNode target) {
 
+        this.source=source;
+        this.target=target;
         if (source.getType().equals(DragIconType.file) && !target.getType().equals(DragIconType.file)) {
+            target.setTab1(source.getTab1());
+            target.setHeaders(source.getHeaders());
+        }
+
+        if (!source.getType().equals(DragIconType.file) && !target.getType().equals(DragIconType.file)) {
             target.setTab1(source.getTab1());
             target.setHeaders(source.getHeaders());
         }

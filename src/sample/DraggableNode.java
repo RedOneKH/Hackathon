@@ -20,6 +20,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import org.apache.commons.compress.compressors.FileNameUtil;
@@ -132,27 +133,52 @@ public class DraggableNode extends AnchorPane {
             if (event.getClickCount() == 2) {
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader();
+                Parent root;
+                Scene scene;
                 try {
 
                     switch (getType()){
                         case select:
                             loader.setLocation(getClass().getResource("/selectConfiguration_window.fxml"));
-                            Parent root =  loader.load();
+                            root = loader.load();
                             SelectConfigurationController sc=loader.getController();
                             sc.setTableName(getTab1());
-                            Scene scene = new Scene(root);
+                            scene = new Scene(root);
                             stage.setScene(scene);
                             sc.addColumnsToVbox(headers);
+                            stage.show();
                             break;
                         case combine:
                             break;
                         case groupeby:
+                            loader.setLocation(getClass().getResource("/groupebyConfig.fxml"));
+                            root = loader.load();
+                            groupebyConfigController gc=loader.getController();
+                            gc.setTableName(getTab1());
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            gc.initListView(headers);
+                            stage.show();
                             break;
                         case file:
+                            BorderPane root2 = new BorderPane();
+
+                            try{
+                                stage = new Stage();
+
+                                scene = new Scene(root2);
+                                scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+                                stage.setScene(scene);
+                                stage.show();
+                                root2.setCenter(new TestUploadWrite(headers,records));
+
+                            } catch(Exception e) {
+                                e.printStackTrace();
+                            }
                             break;
                     }
 
-                stage.show();
+
                 } catch (IOException e) {
                 e.printStackTrace();
             }

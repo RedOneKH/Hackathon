@@ -20,6 +20,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,7 +31,9 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import static com.sun.webkit.graphics.WCImage.getImage;
@@ -80,6 +84,49 @@ public class RootLayout extends AnchorPane {
         startbtn.setTooltip(new Tooltip("Start Workflow"));
         previewbtn.setGraphic(getImage("preview"));
         previewbtn.setTooltip(new Tooltip("Preview Results"));
+        previewbtn.setOnAction(event -> {
+
+
+            DraggableNode dn=((DraggableNode)right_pane.getChildren().get(right_pane.getChildren().size()-1));
+            if(dn!=null){
+                Stage stage;
+                FXMLLoader loader = new FXMLLoader();
+                Parent root;
+                Scene scene;
+                switch (dn.getType()) {
+
+                    case select:
+                        break;
+                    case combine:
+
+                        break;
+                    case groupeby:
+
+                        break;
+                    case file:
+                        BorderPane root2 = new BorderPane();
+
+                        try{
+                            stage = new Stage();
+
+                            scene = new Scene(root2);
+                            scene.getStylesheets().add(getClass().getResource("/application.css").toExternalForm());
+                            stage.setScene(scene);
+                            stage.show();
+                            root2.setCenter(new TestUploadWrite(dn.getHeaders(),dn.getRecords()));
+
+                        } catch(Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+
+        });
 
         right_pane.setStyle("-fx-background-image: url('/back3.png'); " +
                 "-fx-background-position: center center; " +

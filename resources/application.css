@@ -28,18 +28,6 @@
 	rgba(255, 255, 255, 0.35);
 }
 
-.icon-blue {
-	-fx-background-color: blue;
-}
-
-.icon-red {
-	-fx-background-color: red;
-}
-
-.icon-green {
-	-fx-background-color: green;
-}
-
 .icon-black {
 	-fx-background-color: black;
 }
@@ -48,10 +36,9 @@
 	-fx-background-color: lightgrey;
 }
 
-.icon-yellow {
-	-fx-background-color: yellow;
+.list-cell {
+	-fx-alignment: center;
 }
-
-.icon-purple {
-	-fx-background-color: purple;
+.table-cell{
+	-fx-alignment: center;
 }

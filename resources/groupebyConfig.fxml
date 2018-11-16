@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="/application.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.groupebyConfigController">
+    <children>
+        <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <items>
+                        <Label text="Select configuration" />
+                    </items>
+                </ToolBar>
+            </top>
+            <center>
+                <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox prefHeight="322.0" prefWidth="73.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="210.0" text="Columns" VBox.vgrow="ALWAYS" />
+                                <TextField prefHeight="19.0" prefWidth="200.0" promptText="search" />
+                        <ListView fx:id="columnsListView" prefHeight="262.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                            </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <VBox prefHeight="322.0" prefWidth="163.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="36.0" prefWidth="306.0" text="Group by columns" VBox.vgrow="ALWAYS" />
+                            <ListView fx:id="groupByListView" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="209.0">
+                           <children>
+                              <Button fx:id="addGroupBy" mnemonicParsing="false" text="Add" />
+                           </children>
+                        </HBox>
+                            </children></VBox>
+                        <Separator orientation="VERTICAL" prefHeight="322.0" prefWidth="10.0" />
+                        <VBox prefHeight="360.0" prefWidth="182.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="257.0" text="Aggregate columns" VBox.vgrow="ALWAYS" />
+                        <ScrollPane prefHeight="212.0" prefWidth="252.0" VBox.vgrow="ALWAYS">
+                           <content>
+                                      <GridPane fx:id="aggregateGridPane" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="233.0" prefWidth="235.0" vgap="5.0">
+                                          <columnConstraints>
+                                              <ColumnConstraints hgrow="NEVER" maxWidth="56.0" minWidth="10.0" prefWidth="16.0" />
+                                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="101.0" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="103.0" minWidth="10.0" prefWidth="80.0" />
+                                          </columnConstraints>
+                                      </GridPane>
+                           </content>
+                        </ScrollPane>
+                        <HBox alignment="CENTER" prefHeight="52.0" prefWidth="252.0">
+                           <children>
+                              <Button fx:id="addAggregate" mnemonicParsing="false" text="Add" />
+                           </children>
+                        </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </center>
+            <bottom>
+                <HBox alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Close" />
+                        <Region prefHeight="38.0" prefWidth="22.0" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="85.0" text="Save" />
+                        <Region prefHeight="38.0" prefWidth="27.0" />
+                    </children>
+                </HBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</AnchorPane>

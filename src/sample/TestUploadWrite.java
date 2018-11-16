@@ -16,6 +16,19 @@ public class TestUploadWrite extends AnchorPane {
 
     public TestUploadWrite(ArrayList<String> headers,String query) {
 
+
+
+
+
+        DataHelper t = new DataHelper();
+        ArrayList<ArrayList<String>> records = t.executeQuery(query);
+        ArrayList<ArrayList<String>> list =new ArrayList<>();
+        list.add(headers);
+        list.addAll(records);
+        t.filldata(list,tab);
+    }
+
+    public TestUploadWrite(ArrayList<String> headers,ArrayList<ArrayList<String>> records) {
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/test.fxml")
         );
@@ -29,16 +42,13 @@ public class TestUploadWrite extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-
-
-        DataHelper t = new DataHelper();
-        ArrayList<ArrayList<String>> records = t.executeQuery(query);
         ArrayList<ArrayList<String>> list =new ArrayList<>();
         list.add(headers);
         list.addAll(records);
+        DataHelper t =new DataHelper();
         t.filldata(list,tab);
     }
+
 
     @FXML
     private void initialize() {
